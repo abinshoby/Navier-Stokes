@@ -1,0 +1,104 @@
+                        PROJECT REPORT
+Group 1: Abin Shoby
+         Adithya G
+         Jeenu Sebastian
+         Shaun Thayil
+
+TOPIC: Stencils for physically realistic simulations in graphics
+
+BRIEF: Fast fluid dynamics simulation using Navier-Stokes equations (stencils)) on the GPU
+
+TASK1:
+Installation of Polly from https://polly.llvm.org/get_started.html.
+
+mkdir polly && cd polly
+wget http://polly.llvm.org/polly.sh
+
+Changed cmake  line to  cmake ${LLVM_SRC} -DLLVM_USE_LINKER=gold -DCMAKE_BUILD_TYPE=Release
+
+chmod +x polly.sh
+./polly.sh
+
+Installed Clang by using command, sudo apt install clang
+
+TASK2:
+Refered the link http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch38.html
+(Mainly the table 38.1)
+It contains the Navier stokes equation and tips for solving the equation programatically.
+
+TASK3:
+Observations on execution time of programs with and without the use of polly.
+command used for parallelization of loops: clang -O3 filename.c -mllvm -polly -o outfile
+************DIFFERENTIAL.C***********************************
+                      
+            without parallelism   
+            real    0m0.005s        
+            user    0m0.001s
+            sys     0m0.004s
+
+            with parallelism
+            real    0m0.005s
+            user    0m0.005s
+            sys     0m0.000s
+
+Conclusion: No change in execution time when parallelized. So it is not parallelizable since there is only single loop.
+
+***********NESTED LOOP.c*************************************
+      
+            without parallelism 
+            real    0m0.015s
+            user    0m0.012s
+            sys     0m0.004s
+
+            with parallelism
+            real    0m0.004s
+            user    0m0.003s
+            sys     0m0.001s
+
+Conclusion: Performance of parallelized program is 3.75 times than that of normal program. It is due to the loop unrolling of nested loop.
+
+************BUBBLESORT.C************************************
+
+Trial 1:    without parallelism ( about 100 elements) 
+            real    0m0.185s
+            user    0m0.180s
+            sys     0m0.004s
+
+            with parallelism  
+            real    0m0.050s
+            user    0m0.046s
+            sys     0m0.004s
+
+
+Trial 2:    without parallelism ( 10000 elements)
+            real    0m0.163s
+            user    0m0.162s
+            sys     0m0.001s
+
+            with parallelism
+            real    0m0.056s
+            user    0m0.053s
+            sys     0m0.004s
+Conclusion: Performance of Bubble sort is higher by a factor of 3.3 on average when executed in parallelized form.
+
+************FACTORIAL.C*********************
+Trial 1:    n=20
+            without parallelism
+            real    0m0.005s
+            user    0m0.000s
+            sys     0m0.005s                
+
+            with parallelism
+            real    0m0.002s
+            user    0m0.001s
+            sys     0m0.000s
+
+
+
+
+On Average Performance of Polly with clang is 3.5 times the GCC
+
+
+
+
+

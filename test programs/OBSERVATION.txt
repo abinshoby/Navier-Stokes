@@ -1,0 +1,154 @@
+clang -O3 nested\ loop.c -mllvm -polly -o op
+************DIFFERENTIAL.C***********************************
+                      
+Trial 1:        without parallelism   
+                real    0m0.005s        
+                user    0m0.001s
+                sys     0m0.004s
+
+                with parallelism
+                real    0m0.005s
+                user    0m0.005s
+                sys     0m0.000s
+
+***********NESTED LOOP.c*************************************
+TRial 1:        without parallelism 
+                real    0m0.015s
+                user    0m0.012s
+                sys     0m0.004s
+
+                with parallelism
+                real    0m0.004s
+                user    0m0.003s
+                sys     0m0.001s
+
+************BUBBLESORT.C************************************
+Trial 1:    without parallelism ( about 20 elements)
+            
+            real    0m0.005s
+            user    0m0.005s
+            sys     0m0.000s
+
+            with parallelism
+            
+            real    0m0.005s
+            user    0m0.001s
+            sys     0m0.004s
+
+Trial 2:    without parallelism ( 10000 elements)
+            real    0m0.163s
+            user    0m0.162s
+            sys     0m0.001s
+
+            with parallelism
+            real    0m0.056s
+            user    0m0.053s
+            sys     0m0.004s
+
+
+******prime.c********
+real    0m5.919s
+user    0m5.877s
+sys     0m0.040s
+
+
+real    0m5.137s
+user    0m5.089s
+sys     0m0.048s
+
+
+******fibonacci.c****
+n=1000000
+real    0m8.100s
+user    0m0.503s
+sys     0m1.899s
+
+
+real    0m7.995s
+user    0m0.455s
+sys     0m1.928s
+
+
+*****frequency of numbers****
+real    0m15.422s
+user    0m15.413s
+sys     0m0.000s
+
+real    0m4.583s
+user    0m4.578s
+sys     0m0.004s
+
+
+****permutation.c****
+real    1m8.685s
+user    0m7.622s
+sys     0m1.672s
+
+real    1m7.653s
+user    0m7.350s
+sys     0m1.812s
+
+****dfs********
+
+No of vertices = 10000
+real    0m0.940s
+user    0m0.575s
+sys     0m0.363s
+
+real    0m0.515s
+user    0m0.234s
+sys     0m0.282s
+
+
+*****dijkstras******
+no of vertices=10
+real    0m0.004s
+user    0m0.001s
+sys     0m0.003s
+
+real    0m0.003s
+user    0m0.001s
+sys     0m0.003s
+
+****linear search****
+no of elements =10000
+real    0m0.005s
+user    0m0.005s
+sys     0m0.000s
+
+real    0m0.001s
+user    0m0.000s
+sys     0m0.001s
+
+****find all spanning tree****
+
+complete graph of 1000 vertices
+real    0m1.624s
+user    0m1.608s
+sys     0m0.008s
+
+
+real    0m0.844s
+user    0m0.832s
+sys     0m0.009s
+
+*****longest increasing subsequence****
+no of elements in the array =20
+real    0m0.022s
+user    0m0.021s
+sys     0m0.001s
+
+real    0m0.013s
+user    0m0.009s
+sys     0m0.004s
+
+
+
+****heapdsort**
+real    0m0.184s
+user    0m0.065s
+sys     0m0.008s
+
+real    0m0.171s
+user    0m0.062s
+sys     0m0.009s
